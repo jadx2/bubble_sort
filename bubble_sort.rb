@@ -12,29 +12,29 @@ def bubble_sort(arr)
 
     break unless swapped
   end
-  puts arr
+  arr
 end
 
 def bubble_sort_by(arr)
   len = arr.length
 
-  if block_given?
-    loop do
-      swapped = false
+  loop do
+    swapped = false
 
-      (len - 1).times do |i|
-        left = arr[i]
-        right = arr[i + 1]
-
-        if yield(left, right).positive?
-          arr[i], arr[i + 1] = arr[i + 1], arr[i]
-          swapped = true
-        end
+    (len - 1).times do |i|
+      if yield(arr[i], arr[i + 1]).positive?
+        arr[i], arr[i + 1] = arr[i + 1], arr[i]
+        swapped = true
       end
-      break unless swapped
     end
-    puts arr
-  else
-    puts "You need to add a block"
+    break unless swapped
   end
+  arr
 end
+
+sort = bubble_sort_by(%w[hey hello hi h]) do |left, right|
+  left.length <=> right.length
+end
+
+p sort
+p bubble_sort([1, 4, 6, 9, 10, 8, 7, 5, 2, 3])
