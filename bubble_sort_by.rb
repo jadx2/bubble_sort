@@ -12,18 +12,16 @@ def bubble_sort_by(arr)
         if yield(left, right).positive?
           arr[i], arr[i + 1] = arr[i + 1], arr[i]
           swapped = true
-        end
-      else
-        if (left.length <=> right.length).positive?
+        elsif (left.length <=> right.length).positive?
           arr[i], arr[i + 1] = arr[i + 1], arr[i]
           swapped = true
         end
       end
     end
 
-    break if !swapped
+    break unless swapped
   end
   puts arr
 end
 
-bubble_sort_by(["hi", "hello", "hey", "h"]) { |left, right| left.length <=> right.length }
+bubble_sort_by(%w[hi hello hey h]) { |left, right| left.length <=> right.length }

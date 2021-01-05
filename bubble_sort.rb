@@ -1,11 +1,18 @@
-def bubble_sort(array)
-  (array.length - 1).times do |i|
-    (array.length - 1).times do |i|
-      if array[i] > array[i + 1]
-        array[i], array[i + 1] = array[i + 1], array[i]
+def bubble_sort(arr)
+  len = arr.length
+  loop do
+    swapped = false
+
+    (len - 1).times do |i|
+      if arr[i] > arr[i + 1]
+        arr[i], arr[i + 1] = arr[i + 1], arr[i]
+        swapped = true
       end
     end
+
+    break unless swapped
   end
-  puts array
+  puts arr
 end
-bubble_sort([4,3,78,2,0,2,5])
+
+bubble_sort([4, 3, 78, 2, 0, 2, 5])
