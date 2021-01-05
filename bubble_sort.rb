@@ -35,6 +35,6 @@ def bubble_sort_by(arr)
     end
     puts arr
   else
-    puts "You need to add a block"
+    puts 'You need to add a block'
   end
 end
